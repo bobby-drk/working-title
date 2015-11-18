@@ -7,6 +7,7 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Socialite;
 
 class AuthController extends Controller
 {
@@ -22,6 +23,8 @@ class AuthController extends Controller
     */
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
+    protected $redirectPath = '/';
+    protected $loginPath    = '/login';
 
     /**
      * Create a new authentication controller instance.
@@ -62,4 +65,38 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
+
+    /**
+     * Redirect the user to the Facebook authentication page.
+     *
+     * @return Response
+     */
+    public function redirectToFB()
+    {
+        return Socialite::driver('facebook')->redirect();
+    }
+
+    /**
+     * Obtain the user information from GitHub.
+     *
+     * @return Response
+     */
+    public function handleFBCallback()
+    {
+        $user = Socialite::driver('facebook')->user();
+
+echo "<pre>";
+print_r($user);
+echo "</pre>";
+echo "print_r located in <a href='#' title= '" . __FILE__ . "'>file</a> on line " . __LINE__;
+exit;
+
+        //if id found in DB - no action (assuming they are logged in - need tests)
+        //else - check the email - if email assume logged in
+        //if neither - create account
+
+
+
+    }
+
 }
