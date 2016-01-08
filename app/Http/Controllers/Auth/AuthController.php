@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\UserProvider;
+use Auth;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use App\Http\Controllers\Auth\Redirect;
 use Socialite;
 
 class AuthController extends Controller
@@ -84,18 +87,46 @@ class AuthController extends Controller
     public function handleFBCallback()
     {
         $user = Socialite::driver('facebook')->user();
+        $local_user = UserProvider::find($user['id'].'facebook');
 
-echo "<pre>";
-print_r($user);
-echo "</pre>";
-echo "print_r located in <a href='#' title= '" . __FILE__ . "'>file</a> on line " . __LINE__;
-exit;
+        if(count($local_user)) {
+            $local_user = $local_user->user()->first();
+        } else {
 
-        //if id found in DB - no action (assuming they are logged in - need tests)
-        //else - check the email - if email assume logged in
-        //if neither - create account
+            $local_user = User::where('email', $user['email'])->first();
+
+            //not found by email either
+            if(!count($local_user)) {
+
+                //create user
+                $local_user = User::create([
+                    'first_name' => $user['name'],
+                    'email'=> $user['email']
+                ]);
+
+                UserProvider::create([
+                    'provider_id' => $user['id'].'facebook',
+                    'user_id'=> $local_user['id'],
+                    'provider'=> 'facebook'
+                ]);
+
+            } else {
+                //update user with
+                UserProvider::create([
+                    'provider_id' => $user['id'].'facebook',
+                    'user_id'=> $local_user['id'],
+                    'provider'=> 'facebook'
+                ]);
+            }
+
+        //login
+
+        }
 
 
+        Auth::login($local_user, true);
+
+        return redirect($this->redirectPath);//I think this is a FB issue currently
 
     }
 
