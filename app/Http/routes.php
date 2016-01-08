@@ -1,5 +1,6 @@
 <?php
-
+use App\User;
+use App\UserProvider;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -12,6 +13,15 @@
 */
 
 Route::get('/', function () {
+
+echo "&nbsp;logged in:";
+if (Auth::check()) {
+    echo "1<br />\n";
+} else {
+    echo "0<br />\n";
+
+}
+
     return view('welcome');
 });
 
@@ -35,3 +45,6 @@ Route::post('password/reset', 'Auth\PasswordController@postReset');
 
 Route::get('facebook_login', 'Auth\AuthController@redirectToFB');
 Route::get('auth/facebook/callback', 'Auth\AuthController@handleFBCallback');
+
+
+// Route::get('login/{provider?}', 'Auth\AuthController@login');

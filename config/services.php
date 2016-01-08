@@ -38,6 +38,6 @@ return [
     'client_id' => '775778952532487',
     'client_secret' => 'f48cf62f394064998dff8b65910d3ad0',
     'redirect' => 'http://working-title.loc/auth/facebook/callback',
-],
+    ],
 
 ];
