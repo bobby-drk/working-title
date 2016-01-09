@@ -1,0 +1,1 @@
+<div id="copyright text-right">&copy; Copyright DATE & SITE NAME</div>

@@ -22,7 +22,12 @@ if (Auth::check()) {
 
 }
 
-    return view('welcome');
+    return view('pages.home');
+});
+
+Route::get('profile', function()
+{
+    return View::make('pages.profile');
 });
 
 
