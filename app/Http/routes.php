@@ -13,15 +13,6 @@ use App\UserProvider;
 */
 
 Route::get('/', function () {
-
-echo "&nbsp;logged in:";
-if (Auth::check()) {
-    echo "1<br />\n";
-} else {
-    echo "0<br />\n";
-
-}
-
     return view('pages.home');
 });
 
