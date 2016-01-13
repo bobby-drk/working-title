@@ -1,5 +1,5 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     @include('includes.head')
 </head>
@@ -29,5 +29,6 @@
     </footer>
 
 </div>
+@include('includes.js')
 </body>
 </html>
