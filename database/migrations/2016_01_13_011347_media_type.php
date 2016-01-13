@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Media extends Migration
+class MediaType extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,10 @@ class Media extends Migration
      */
     public function up()
     {
-        Schema::create('media', function (Blueprint $table) {
+        Schema::create('media_type', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->integer('type_id')->unsigned();
+            $table->string('type');
+            $table->integer('active')->default(1);
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class Media extends Migration
      */
     public function down()
     {
-        Schema::drop('media');
+        Schema::drop('media_type');
     }
 }
