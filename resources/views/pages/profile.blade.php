@@ -1,4 +1,4 @@
-@extends('layouts.sidebar')
+@extends('layouts.default')
 @section('content')
-    Hello Sidebar!
+    Hello !
 @stop

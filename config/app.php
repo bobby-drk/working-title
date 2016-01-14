@@ -2,6 +2,8 @@
 
 return [
 
+    'site_name' => "Working Title",
+
     /*
     |--------------------------------------------------------------------------
     | Application Debug Mode
@@ -198,6 +200,7 @@ return [
         'Form'      => Illuminate\Html\FormFacade::class,
         'HTML'      => Illuminate\Html\HtmlFacade::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'CustomHelpers' => App\Helpers\CustomHelpers::class
 
     ],
 

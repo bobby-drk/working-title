@@ -12,14 +12,14 @@ use App\UserProvider;
 |
 */
 
-Route::get('/', function () {
-    return view('pages.home');
-});
 
-Route::get('profile', function()
-{
+Route::get('/', ['as' => 'home', function () {
+    return view('pages.home');
+}]);
+
+Route::get('profile', ['as' => 'profile', function() {
     return View::make('pages.profile');
-});
+}]);
 
 
 // Authentication routes...
