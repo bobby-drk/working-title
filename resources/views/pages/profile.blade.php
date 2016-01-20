@@ -1,4 +1,6 @@
 @extends('layouts.default')
 @section('content')
-    Hello !
+    {!! Form::open(array('url' => 'foo/bar')) !!}
+        {!! Form::label('email', 'E-Mail Address') !!}
+    {!! Form::close() !!}
 @stop
