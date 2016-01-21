@@ -1,2 +1,9 @@
 html {
 }
+
+.vertical_offset_xsm    { margin-top: 5px; }
+.vertical_offset_s      { margin-top: 10px; }
+.vertical_offset_m      { margin-top: 15px; }
+.vertical_offset_l      { margin-top: 25px; }
+.vertical_offset_xl     { margin-top: 50px; }
+.vertical_offset_xxl    { margin-top: 100px; }
