@@ -1,23 +1,57 @@
-<!-- resources/views/auth/login.blade.php -->
+@extends('layouts.default')
+@section('content')
 
-<form method="POST" action="/login">
-    {!! csrf_field() !!}
+<div class='well'>
+<div class="row">
+<div class="col-md-5">
 
-    <div>
-        Email
-        <input type="email" name="email" value="{{ old('email') }}">
-    </div>
 
-    <div>
-        Password
-        <input type="password" name="password" id="password">
-    </div>
+    {!! Form::open(array('url' => '/login', 'class' => 'form-horizontal')) !!}
+        <fieldset>
+            <legend><i class='glyphicon glyphicon-lock'></i> Login</legend>
 
-    <div>
-        <input type="checkbox" name="remember"> Remember Me
-    </div>
+            <div class="row">
+                <div class="col-md-11">
+                    {!! Form::label('email', 'Email') !!}
+                </div>
+            </div>
 
-    <div>
-        <button type="submit">Login</button>
-    </div>
-</form>
+            <div class="row">
+                <div class="col-md-11">
+                    {!! Form::text('email', '', ["class" => "form-control"]) !!}
+                </div>
+            </div>
+
+            <div class="row vertical_offset_s">
+                <div class="col-md-11">
+                    {!! Form::label('password', 'Password') !!}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-11">
+                    {!!Form::password('password', ["class" => "form-control"]) !!}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-11">
+
+                    {!! Form::checkbox('remember', '', '', array('id'=>'remember_me')) !!}
+                    {!! Form::label('remember_me', 'Remember Me') !!}
+
+                </div>
+            </div>
+
+            <div class="row vertical_offset_s">
+                <div class="col-md-11">
+                    {!!Form::submit('Login', ["class"=>"btn btn-primary btn-sm pull-right"])!!}
+                </div>
+            </div>
+        </fieldset>
+    {!! Form::close() !!}
+</div>
+</div>
+</div>
+
+@stop

@@ -17,7 +17,13 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="{{ CustomHelpers::isActiveRoute('profile') }}"><a href="/profile">Profile</a></li>
+
+    @if (Auth::check())
+        <li><a href="/loggout">Logout</a></li>
+    @else
         <li><a href="/login">Login</a></li>
+    @endif
+
       </ul>
     </div>
   </div>
