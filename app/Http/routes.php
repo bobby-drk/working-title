@@ -39,7 +39,10 @@ Route::post('password/email', 'Auth\PasswordController@postEmail');
 Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
 
-Route::get('facebook_login', 'Auth\AuthController@redirectToFB');
+Route::get('facebook_login', [
+    'as'    => 'fb_login',
+    'uses'  => 'Auth\AuthController@redirectToFB'
+]);
 Route::get('auth/facebook/callback', 'Auth\AuthController@handleFBCallback');
 
 
