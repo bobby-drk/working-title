@@ -1,6 +1,8 @@
 <?php
 use App\User;
 use App\UserProvider;
+
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -20,6 +22,15 @@ Route::get('/', ['as' => 'home', function () {
 Route::get('profile', ['as' => 'profile', function() {
     return View::make('pages.profile');
 }]);
+
+Route::get('rate', ['as' => 'rate', function() {
+    return View::make('pages.rate');
+}]);
+
+Route::post('save_rating', function() {
+//    dd($request->all());
+    dd($_POST);
+});
 
 
 // Authentication routes...
