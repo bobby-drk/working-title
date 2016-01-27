@@ -1,29 +1,85 @@
-<!-- resources/views/auth/register.blade.php -->
+@extends('layouts.default')
+@section('content')
 
-<form method="POST" action="/register">
-    {!! csrf_field() !!}
+<div class='well'>
+    <div class="row">
+        <div class="col-md-6">
 
-    <div>
-        Name
-        <input type="text" name="name" value="{{ old('name') }}">
+            {!! Form::open(array('url' => '/register', 'class' => 'form-horizontal')) !!}
+                <fieldset>
+                    <legend><i class='glyphicon glyphicon-user'></i> Login</legend>
+
+
+                    <div class="row">
+                        <div class="col-md-11">
+                            {!! Form::label('first_name', 'First Name') !!}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-11">
+                            {!! Form::text('first_name', old("first_name"), ["class" => "form-control"]) !!}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-11">
+                            {!! Form::label('last_name', 'Last Name') !!}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-11">
+                            {!! Form::text('last_name', old("last_name"), ["class" => "form-control"]) !!}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-11">
+                            {!! Form::label('email', 'Email') !!}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-11">
+                            {!! Form::text('email', old("email"), ["class" => "form-control"]) !!}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-11">
+                            {!! Form::label('password', 'Password') !!}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-11">
+                            {!! Form::password('password', ["class" => "form-control"]) !!}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-11">
+                            {!! Form::label('password_confirmation', 'Confirm Password') !!}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-11">
+                            {!! Form::password('password_confirmation', ["class" => "form-control"]) !!}
+                        </div>
+                    </div>
+
+                    <div class="row vertical_offset_s">
+                        <div class="col-md-11">
+                            {!!Form::submit('Register', ["class"=>"btn btn-primary btn-sm pull-right"])!!}
+                        </div>
+                    </div>
+
+                </fieldset>
+            {!! Form::close() !!}
+
+        </div>
     </div>
-
-    <div>
-        Email
-        <input type="email" name="email" value="{{ old('email') }}">
-    </div>
-
-    <div>
-        Password
-        <input type="password" name="password">
-    </div>
-
-    <div>
-        Confirm Password
-        <input type="password" name="password_confirmation">
-    </div>
-
-    <div>
-        <button type="submit">Register</button>
-    </div>
-</form>
+</div>
+@stop
