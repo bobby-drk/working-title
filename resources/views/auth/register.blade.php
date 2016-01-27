@@ -1,9 +1,11 @@
 @extends('layouts.default')
 @section('content')
 
+
+        <div class="col-md-6">
 <div class='well'>
     <div class="row">
-        <div class="col-md-6">
+
 
             {!! Form::open(array('url' => '/register', 'class' => 'form-horizontal')) !!}
                 <fieldset>
