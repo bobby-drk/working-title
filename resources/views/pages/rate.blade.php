@@ -32,11 +32,6 @@
         <div class="row">
             <div class="col-md-3">
                 {!! Form::label('score', 'Score') !!}
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-3">
                 {!!Form::number('score', '', ["class"=>"form-control", "placeholder" => "Scale 1-100"]) !!}
             </div>
         </div>
@@ -44,42 +39,24 @@
         <div class="row vertical_offset_s">
             <div class="col-md-3">
                 {!! Form::label('date', 'Date Watched') !!}
+                {!!Form::date('date', '', ["class"=>"form-control"]) !!}
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-md-3">
-                {!!Form::date('experience', '', ["class"=>"form-control"]) !!}
-            </div>
-        </div>
-
-
-        <div class="row vertical_offset_s">
+                <div class="row vertical_offset_s">
             <div class="col-md-3">
                 {!! Form::label('experience', 'Experience') !!}
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-3">
-                {!!Form::text('', '', ["class"=>"form-control", "placeholder" => "Home, Theater.... "]) !!}
+                {!!Form::text('experience', '', ["class"=>"form-control", "placeholder" => "Home, Theater.... "]) !!}
             </div>
         </div>
         
         <div class="row vertical_offset_s">
             <div class="col-md-3">
                 {!! Form::label('mood', 'Mood') !!}
-            </div>
-            <div class="col-md-3">
-                {!! Form::label('with', 'Watched With') !!}
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-3">
                 {!!Form::text('mood', '', ["class"=>"form-control", "placeholder" => "Happy, Sad.... "]) !!}
             </div>
             <div class="col-md-3">
+                {!! Form::label('with', 'Watched With') !!}
                 {!!Form::text('with', '', ["class"=>"form-control", "placeholder" => "SO, friend, Mom.... "]) !!}
             </div>
         </div>
