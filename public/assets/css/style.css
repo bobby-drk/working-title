@@ -27,3 +27,10 @@ html {
 .border-between > [class*='col-']:last-child:after {
     display: none;
 }
+
+hr {
+    border: 0;
+    height: 0;
+    border-top: 1px solid #b2b2b2;
+    border-bottom:none;
+}

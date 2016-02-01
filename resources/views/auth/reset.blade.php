@@ -1,9 +1,7 @@
-<!-- resources/views/auth/reset.blade.php -->
+@extends('layouts.default')
+@section('content')
 
-<form method="POST" action="/password/reset">
-    {!! csrf_field() !!}
-    <input type="hidden" name="token" value="{{ $token }}">
-
+<?php /*
     @if (count($errors) > 0)
         <ul>
             @foreach ($errors->all() as $error)
@@ -11,25 +9,50 @@
             @endforeach
         </ul>
     @endif
+*/?>
 
-    <div>
-        Email
-        <input type="email" name="email" value="{{ old('email') }}">
-    </div>
 
-    <div>
-        Password
-        <input type="password" name="password">
-    </div>
+<div class="row ">
+    <div class="col-md-6 ">
+        <div class='well '>
+            {!! Form::open(array('url' => '/password/reset', 'class' => 'form-horizontal')) !!}
 
-    <div>
-        Confirm Password
-        <input type="password" name="password_confirmation">
-    </div>
+                {!! Form::hidden('token', $token) !!}
 
-    <div>
-        <button type="submit">
-            Reset Password
-        </button>
+                <fieldset>
+                    <legend><i class='glyphicon glyphicon-lock'></i> New Password</legend>
+
+                    <div class="row vertical_offset_s">
+                        <div class="col-md-11">
+                            {!! Form::label('email', 'Email') !!}
+                            {!! Form::text('email', old("email"), ["class" => "form-control"]) !!}
+                        </div>
+                    </div>
+
+                    <div class="row vertical_offset_s">
+                        <div class="col-md-11">
+                            {!! Form::label('password', 'Password') !!}
+                            {!! Form::password('password', ["class" => "form-control"]) !!}
+                        </div>
+                    </div>
+
+                    <div class="row vertical_offset_s">
+                        <div class="col-md-11">
+                            {!! Form::label('password_confirmation', 'Confirm Password') !!}
+                            {!! Form::password('password_confirmation', ["class" => "form-control"]) !!}
+                        </div>
+                    </div>
+
+                    <div class="row vertical_offset_s">
+                        <div class="col-md-11">
+                            {!!Form::submit('Reset Password', ["class"=>"btn btn-primary btn-sm pull-right"])!!}
+                        </div>
+                    </div>
+
+                </fieldset>
+            {!! Form::close() !!}
+
+        </div>
     </div>
-</form>
+</div>
+@stop
