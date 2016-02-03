@@ -43,7 +43,7 @@
             </div>
         </div>
 
-                <div class="row vertical_offset_s">
+        <div class="row vertical_offset_s">
             <div class="col-md-3">
                 {!! Form::label('experience', 'Experience') !!}
                 {!!Form::text('experience', '', ["class"=>"form-control", "placeholder" => "Home, Theater.... "]) !!}
@@ -55,6 +55,9 @@
                 {!! Form::label('mood', 'Mood') !!}
                 {!!Form::text('mood', '', ["class"=>"form-control", "placeholder" => "Happy, Sad.... "]) !!}
             </div>
+        </div>
+        
+        <div class="row vertical_offset_s">
             <div class="col-md-3">
                 {!! Form::label('with', 'Watched With') !!}
                 {!!Form::text('with', '', ["class"=>"form-control", "placeholder" => "SO, friend, Mom.... "]) !!}
@@ -66,6 +69,8 @@
                 {!!Form::submit('Rate Movie', ["class"=>"btn btn-primary btn-sm"])!!}
             </div>
         </div>
+        
+        
 
         {!! Form::close() !!}
     </fieldset>
