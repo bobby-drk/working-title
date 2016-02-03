@@ -7,6 +7,13 @@
         {!! Form::submit('Add'); !!}
         
     {!! Form::close() !!}-->
+
+
+// With JQuery
+$("#ex6").slider();
+$("#ex6").on("slide", function(slideEvt) {
+	$("#ex6SliderVal").text(slideEvt.value);
+});
     
 <h1>Rate Movies</h1>
 
@@ -16,7 +23,6 @@
         <legend><i class='glyphicon glyphicon-film'></i> Movie Title</legend>
         <div class="row">
             <div class="col-md-6">
-
                 <div>
                     {!!Form::text('title', '', ["class"=>"form-control", "placeholder" => "Start Typing Movie Title Here"]) !!}
                 </div>
@@ -69,10 +75,15 @@
                 {!!Form::submit('Rate Movie', ["class"=>"btn btn-primary btn-sm"])!!}
             </div>
         </div>
-        
-        
 
-        {!! Form::close() !!}
+        <div class="row vertical_offset_s">
+            <div class="col-md-3">
+                <input id="ex6" type="text" data-slider-min="-5" data-slider-max="20" data-slider-step="1" data-slider-value="3">
+                <span id="ex6CurrentSliderValLabel">Current Slider Value: <span id="ex6SliderVal">3</span></span>
+
+            </div>
+        </div>
+        
     </fieldset>
 </div>
 
