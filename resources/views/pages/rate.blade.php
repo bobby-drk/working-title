@@ -71,9 +71,5 @@
     </fieldset>
 </div>
 
-<div class='well'>
-Put the Social Network stuff here
-</div>
-
 
 @stop
