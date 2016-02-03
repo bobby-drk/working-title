@@ -9,11 +9,12 @@
     {!! Form::close() !!}-->
 
 
-// With JQuery
+<script>
 $("#ex6").slider();
 $("#ex6").on("slide", function(slideEvt) {
 	$("#ex6SliderVal").text(slideEvt.value);
 });
+</script>
     
 <h1>Rate Movies</h1>
 
@@ -78,6 +79,7 @@ $("#ex6").on("slide", function(slideEvt) {
 
         <div class="row vertical_offset_s">
             <div class="col-md-3">
+                {!! Form::label('slider', 'Slide Me') !!}
                 <input id="ex6" type="text" data-slider-min="-5" data-slider-max="20" data-slider-step="1" data-slider-value="3">
                 <span id="ex6CurrentSliderValLabel">Current Slider Value: <span id="ex6SliderVal">3</span></span>
 
