@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     @include('includes.head')
+    @include('includes.js')
 </head>
 <body>
     @include('includes.header')
@@ -19,6 +20,5 @@
 
     </div>
 
-    @include('includes.js')
 </body>
 </html>

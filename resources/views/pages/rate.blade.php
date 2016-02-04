@@ -10,10 +10,14 @@
 
 
 <script>
-$("#ex6").slider();
-$("#ex6").on("slide", function(slideEvt) {
+    $(function() {
+    // Handler for .ready() called.
+
+    $("#ex6").slider();
+    $("#ex6").on("slide", function(slideEvt) {
 	$("#ex6SliderVal").text(slideEvt.value);
-});
+    });
+    });
 </script>
     
 <h1>Rate Movies</h1>
