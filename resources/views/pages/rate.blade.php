@@ -13,10 +13,10 @@
     $(function() {
     // Handler for .ready() called.
 
-    $("#ex6").slider();
-    $("#ex6").on("slide", function(slideEvt) {
-	$("#ex6SliderVal").text(slideEvt.value);
-    });
+        $("#ex6").slider();
+        $("#ex6").on("slide", function(slideEvt) {
+            $("#ex6SliderVal").text(slideEvt.value);
+        });
     });
 </script>
     
@@ -84,8 +84,8 @@
         <div class="row vertical_offset_s">
             <div class="col-md-3">
                 {!! Form::label('slider', 'Slide Me') !!}
-                <input id="ex6" type="text" data-slider-min="-5" data-slider-max="20" data-slider-step="1" data-slider-value="3">
-                <span id="ex6CurrentSliderValLabel">Current Slider Value: <span id="ex6SliderVal">3</span></span>
+                <input id="ex6" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="50">
+                <span id="ex6CurrentSliderValLabel">Current Slider Value: <span id="ex6SliderVal">50</span></span>
 
             </div>
         </div>
