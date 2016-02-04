@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
+use Alert;
 
 class Authenticate
 {
@@ -38,6 +39,7 @@ class Authenticate
             if ($request->ajax()) {
                 return response('Unauthorized.', 401);
             } else {
+                Alert::add("You must be logged in to access this page", ["alert_type" => "warning"]);
                 return redirect()->guest('login');
             }
         }
