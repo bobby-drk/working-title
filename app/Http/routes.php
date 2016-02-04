@@ -1,6 +1,7 @@
 <?php
 use App\User;
 use App\UserProvider;
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -17,7 +18,7 @@ Route::get('/', ['as' => 'home', function () {
     return view('pages.home');
 }]);
 
-Route::get('profile', ['as' => 'profile', function() {
+Route::get('profile', ['as' => 'profile', function(Request $request) {
     return View::make('pages.profile');
 }]);
 
@@ -28,11 +29,11 @@ Route::post('login', 'Auth\AuthController@postLogin');
 Route::get('logout', 'Auth\AuthController@getLogout');
 
 // Registration routes...
-Route::get('register', 'Auth\AuthController@getRegister');
+Route::get('register', ['as'=> 'register', 'uses' =>'Auth\AuthController@getRegister']);
 Route::post('register', 'Auth\AuthController@postRegister');
 
 // Password reset link request routes...
-Route::get('password/email', 'Auth\PasswordController@getEmail');
+Route::get('password/email', ['as'=> 'forgot_pw', 'uses' =>'Auth\PasswordController@getEmail']);
 Route::post('password/email', 'Auth\PasswordController@postEmail');
 
 // Password reset routes...

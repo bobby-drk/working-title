@@ -202,7 +202,8 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
-        'CustomHelpers' => App\Helpers\CustomHelpers::class
+        'CustomHelpers' => App\Helpers\CustomHelpers::class,
+        'Alert' => App\Helpers\Alert::class
 
     ],
 

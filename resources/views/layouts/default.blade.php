@@ -8,7 +8,7 @@
     <div class="container">
 
         <div id="main" class="row">
-
+            @include('includes.notification')
             @yield('content')
 
         </div>
