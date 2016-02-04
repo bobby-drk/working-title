@@ -4,27 +4,36 @@
 <h1>Profile</h1>
 
 <div class='well'>
-    {!! Form::open(array('url' => 'profile/save_email', 'class' => 'form-horizontal')) !!}
+    {!! Form::open(array('url' => 'profile/save_data', 'class' => 'form-horizontal')) !!}
         <fieldset>
-            <legend><i class='glyphicon glyphicon-envelope'></i> Change Email</legend>
+            <legend><i class='glyphicon glyphicon-user'></i> Your Data</legend>
 
             <div class="row">
+                <div class="col-md-2">
+                    {!! Form::label('first_name', 'First Name') !!}
+                    {!!Form::text('first_name', $user['first_name'], ["class" => "form-control"]) !!}
+                </div>
+
+                <div class="col-md-2">
+                    {!! Form::label('last_name', 'Last Name') !!}
+                    {!!Form::text('last_name', $user['last_name'], ["class" => "form-control"]) !!}
+                </div>
+
+            </div>
+
+            <div class="row vertical_offset_s">
                 <div class="col-md-4">
-                {!! Form::label('email', 'Email Address') !!}
+                    {!! Form::label('email', 'Email Address') !!}
+                    {!!Form::email('email', $user['email'], ["class" => "form-control"]) !!}
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row vertical_offset_s">
                 <div class="col-md-4">
-
-                    <div class="input-group">
-                        {!!Form::email('email', 'set_email@here.com', ["class"=>"form-control"]) !!}
-                        <span class="input-group-btn">
-                        {!!Form::submit('Save', ["class"=>"btn btn-default "]) !!}
-                        </span>
-                    </div>
+                    {!!Form::submit('Save', ["class"=>"btn btn-primary btn-sm pull-right"])!!}
                 </div>
             </div>
+
         </fieldset>
     {!! Form::close() !!}
 </div>
@@ -37,11 +46,6 @@
             <div class="row">
                 <div class="col-md-4">
                     {!! Form::label('current', 'Current Password') !!}
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-4">
                     {!!Form::password('current', ["class" => "form-control"]) !!}
                 </div>
             </div>
@@ -49,11 +53,6 @@
             <div class="row vertical_offset_s">
                 <div class="col-md-4">
                     {!! Form::label('new', 'New Password') !!}
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-4">
                     {!!Form::password('new', ["class" => "form-control"]) !!}
                 </div>
             </div>
@@ -62,11 +61,6 @@
             <div class="row vertical_offset_s">
                 <div class="col-md-4">
                     {!! Form::label('confirm', 'Confirm Password') !!}
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-4">
                     {!!Form::password('confirm', ["class" => "form-control"]) !!}
                 </div>
             </div>

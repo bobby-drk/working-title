@@ -18,9 +18,8 @@ Route::get('/', ['as' => 'home', function () {
     return view('pages.home');
 }]);
 
-Route::get('profile', ['as' => 'profile', function(Request $request) {
-    return View::make('pages.profile');
-}]);
+Route::get('profile', ['as' => 'profile', 'middleware' => 'auth', 'uses' => 'UserController@load_profile']);
+Route::post('profile/save_data', ['middleware' => 'auth', 'uses' => 'UserController@save_profile']);
 
 
 // Authentication routes...
