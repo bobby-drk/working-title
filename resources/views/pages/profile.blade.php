@@ -11,12 +11,12 @@
             <div class="row">
                 <div class="col-md-2">
                     {!! Form::label('first_name', 'First Name') !!}
-                    {!!Form::text('first_name', $user['first_name'], ["class" => "form-control"]) !!}
+                    {!! Form::text('first_name', $first_name, ["class" => "form-control"]) !!}
                 </div>
 
                 <div class="col-md-2">
                     {!! Form::label('last_name', 'Last Name') !!}
-                    {!!Form::text('last_name', $user['last_name'], ["class" => "form-control"]) !!}
+                    {!! Form::text('last_name', $last_name, ["class" => "form-control"]) !!}
                 </div>
 
             </div>
@@ -24,7 +24,7 @@
             <div class="row vertical_offset_s">
                 <div class="col-md-4">
                     {!! Form::label('email', 'Email Address') !!}
-                    {!!Form::email('email', $user['email'], ["class" => "form-control"]) !!}
+                    {!!Form::email('email', $email, ["class" => "form-control"]) !!}
                 </div>
             </div>
 
@@ -39,7 +39,7 @@
 </div>
 
 <div class='well'>
-    {!! Form::open(array('url' => 'profile/change_password', 'class' => 'form-horizontal')) !!}
+    {!! Form::open(array('url' => 'change_password', 'class' => 'form-horizontal')) !!}
         <fieldset>
             <legend><i class='glyphicon glyphicon-lock'></i> Change Password</legend>
 
@@ -52,16 +52,16 @@
 
             <div class="row vertical_offset_s">
                 <div class="col-md-4">
-                    {!! Form::label('new', 'New Password') !!}
-                    {!!Form::password('new', ["class" => "form-control"]) !!}
+                    {!! Form::label('password', 'New Password') !!}
+                    {!!Form::password('password', ["class" => "form-control"]) !!}
                 </div>
             </div>
 
 
             <div class="row vertical_offset_s">
                 <div class="col-md-4">
-                    {!! Form::label('confirm', 'Confirm Password') !!}
-                    {!!Form::password('confirm', ["class" => "form-control"]) !!}
+                    {!! Form::label('password_confirmation', 'Confirm Password') !!}
+                    {!!Form::password('password_confirmation', ["class" => "form-control"]) !!}
                 </div>
             </div>
 
@@ -77,7 +77,15 @@
 </div>
 
 <div class='well'>
-Put the Social Network stuff here
+    <legend><i class='glyphicon glyphicon-dashboard'></i> Social Networks</legend>
+
+    @foreach($providers as $i => $provider_data)
+        <div>
+            <img src='/assets/images/social_media_icons/{{ $provider_data['provider'] }}.png'>
+            <a href="#">&times;</a>
+        </div>
+    @endforeach
+
 </div>
 
 

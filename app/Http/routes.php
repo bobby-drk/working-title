@@ -1,6 +1,4 @@
 <?php
-use App\User;
-use App\UserProvider;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,11 +13,20 @@ use App\UserProvider;
 
 
 Route::get('/', ['as' => 'home', function () {
+
+// echo bcrypt('password') ."<br />\n";
+// echo "echo located in <a href='#' title= '" . __FILE__ . "'>file</a>  on line " . __LINE__ . "<br />\n";
+// exit;
+
+
+
+
     return view('pages.home');
 }]);
 
 Route::get('profile', ['as' => 'profile', 'middleware' => 'auth', 'uses' => 'UserController@load_profile']);
 Route::post('profile/save_data', ['middleware' => 'auth', 'uses' => 'UserController@save_profile']);
+Route::post('change_password', ['middleware' => 'auth', 'uses' => 'UserController@change_password']);
 
 
 // Authentication routes...
@@ -30,6 +37,7 @@ Route::get('logout', 'Auth\AuthController@getLogout');
 // Registration routes...
 Route::get('register', ['as'=> 'register', 'uses' =>'Auth\AuthController@getRegister']);
 Route::post('register', 'Auth\AuthController@postRegister');
+
 
 // Password reset link request routes...
 Route::get('password/email', ['as'=> 'forgot_pw', 'uses' =>'Auth\PasswordController@getEmail']);

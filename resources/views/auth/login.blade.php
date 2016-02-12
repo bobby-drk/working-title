@@ -5,7 +5,6 @@
     <div class="row border-between ">
         <div class="col-md-6">
 
-
             {!! Form::open(array('url' => '/login', 'class' => 'form-horizontal')) !!}
                 <fieldset>
                     <legend><i class='glyphicon glyphicon-lock'></i> Login</legend>
