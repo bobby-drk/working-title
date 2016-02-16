@@ -6,7 +6,7 @@ use Alert;
 use App\User;
 use App\UserProvider;
 use Auth;
-use Illuminate\Foundation\Auth\ResetsPasswords;
+// use Illuminate\Foundation\Auth\ResetsPasswords;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Input;
