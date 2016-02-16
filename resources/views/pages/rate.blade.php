@@ -40,7 +40,7 @@
     <fieldset>
         <legend><i class='glyphicon glyphicon-barcode'></i> Rating Info</legend>
 
-        <div class="row">
+        <div class="row vertical_offset_s">
             <div class="col-md-3">
                 {!! Form::label('score', 'Overall Rating between 1 and 100') !!}
                 <div>
@@ -48,8 +48,22 @@
                 </div>
             </div>
         </div>
-
-        <div class="row">
+        
+        <div class="row vertical_offset_s">
+            <div class="col-md-3">
+                {!! Form::label('date', 'Date Watched') !!}
+                {!!Form::date('date', '', ["class"=>"form-control"]) !!}
+            </div>
+        </div>
+        
+    </fieldset>
+</div>
+        
+<div class='well'>
+    <fieldset>
+        <legend><i class='glyphicon glyphicon-film'></i> Advanced Rating</legend>
+    
+        <div class="row vertical_offset_s">
             <div class="col-md-3">
                 {!! Form::label('directing', 'Rate the Directing') !!}
                 <div>
@@ -58,7 +72,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row vertical_offset_s">
             <div class="col-md-3">
                 {!! Form::label('lead_actors', 'Rate the Leading Actors') !!}
                 <div>
@@ -67,7 +81,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row vertical_offset_s">
             <div class="col-md-3">
                 {!! Form::label('supporting_cast', 'Rate the Supporting Cast') !!}
                 <div>
@@ -76,19 +90,12 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row vertical_offset_s">
             <div class="col-md-3">
                 {!! Form::label('other', 'Rate the Other Stuff') !!}
                 <div>
                     {!!Form::text('other', '', ["class"=>"slider new_line", "data-slider-min"=>"0", "data-slider-max"=>"100", "data-slider-step"=>"1", "data-slider-value"=>"0"]) !!}
                 </div>
-            </div>
-        </div>
-
-        <div class="row vertical_offset_s">
-            <div class="col-md-3">
-                {!! Form::label('date', 'Date Watched') !!}
-                {!!Form::date('date', '', ["class"=>"form-control"]) !!}
             </div>
         </div>
 

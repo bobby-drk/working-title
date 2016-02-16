@@ -27,6 +27,10 @@ Route::get('rate', ['as' => 'rate', function() {
     return View::make('pages.rate');
 }]);
 
+Route::get('test', ['as' => 'test', function() {
+    return View::make('pages.test');
+}]);
+
 Route::post('save_rating', function() {
 //    dd($request->all());
     dd($_POST);
