@@ -7,3 +7,9 @@ html {
 .vertical_offset_l      { margin-top: 25px; }
 .vertical_offset_xl     { margin-top: 50px; }
 .vertical_offset_xxl    { margin-top: 100px; }
+
+
+.new_line               
+{ 
+    display:block; 
+}

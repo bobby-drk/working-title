@@ -13,7 +13,7 @@
     $(function() {
     // Handler for .ready() called.
 
-        $("#ex6").slider();
+        $(".slider").slider();
         $("#ex6").on("slide", function(slideEvt) {
             $("#ex6SliderVal").text(slideEvt.value);
         });
@@ -42,8 +42,46 @@
 
         <div class="row">
             <div class="col-md-3">
-                {!! Form::label('score', 'Score') !!}
-                {!!Form::number('score', '', ["class"=>"form-control", "placeholder" => "Scale 1-100"]) !!}
+                {!! Form::label('score', 'Overall Rating between 1 and 100') !!}
+                <div>
+                    {!!Form::text('score', '', ["class"=>"slider new_line", "data-slider-min"=>"0", "data-slider-max"=>"100", "data-slider-step"=>"1", "data-slider-value"=>"0"]) !!}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                {!! Form::label('directing', 'Rate the Directing') !!}
+                <div>
+                    {!!Form::text('directing', '', ["class"=>"slider new_line", "data-slider-min"=>"0", "data-slider-max"=>"100", "data-slider-step"=>"1", "data-slider-value"=>"0"]) !!}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                {!! Form::label('lead_actors', 'Rate the Leading Actors') !!}
+                <div>
+                    {!!Form::text('lead_actors', '', ["class"=>"slider new_line", "data-slider-min"=>"0", "data-slider-max"=>"100", "data-slider-step"=>"1", "data-slider-value"=>"0"]) !!}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                {!! Form::label('supporting_cast', 'Rate the Supporting Cast') !!}
+                <div>
+                    {!!Form::text('supporting_cast', '', ["class"=>"slider new_line", "data-slider-min"=>"0", "data-slider-max"=>"100", "data-slider-step"=>"1", "data-slider-value"=>"0"]) !!}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                {!! Form::label('other', 'Rate the Other Stuff') !!}
+                <div>
+                    {!!Form::text('other', '', ["class"=>"slider new_line", "data-slider-min"=>"0", "data-slider-max"=>"100", "data-slider-step"=>"1", "data-slider-value"=>"0"]) !!}
+                </div>
             </div>
         </div>
 
@@ -57,14 +95,18 @@
         <div class="row vertical_offset_s">
             <div class="col-md-3">
                 {!! Form::label('experience', 'Experience') !!}
-                {!!Form::text('experience', '', ["class"=>"form-control", "placeholder" => "Home, Theater.... "]) !!}
+                <div>
+                    {!!Form::text('experience', '', ["class"=>"slider new_line", "data-slider-min"=>"0", "data-slider-max"=>"100", "data-slider-step"=>"1", "data-slider-value"=>"0"]) !!}
+                </div>
             </div>
         </div>
         
         <div class="row vertical_offset_s">
             <div class="col-md-3">
                 {!! Form::label('mood', 'Mood') !!}
-                {!!Form::text('mood', '', ["class"=>"form-control", "placeholder" => "Happy, Sad.... "]) !!}
+                <div>
+                    {!!Form::text('mood', '', ["class"=>"slider new_line", "data-slider-min"=>"0", "data-slider-max"=>"100", "data-slider-step"=>"1", "data-slider-value"=>"0"]) !!}
+                </div>
             </div>
         </div>
         
@@ -81,14 +123,14 @@
             </div>
         </div>
 
-        <div class="row vertical_offset_s">
+<!--        <div class="row vertical_offset_s">
             <div class="col-md-3">
                 {!! Form::label('slider', 'Slide Me') !!}
                 <input id="ex6" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="50">
                 <span id="ex6CurrentSliderValLabel">Current Slider Value: <span id="ex6SliderVal">50</span></span>
 
             </div>
-        </div>
+        </div>-->
         
     </fieldset>
 </div>
