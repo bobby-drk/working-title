@@ -19,6 +19,25 @@
         });
     });
 </script>
+
+<script> 
+$(document).ready(function(){
+    $("#flip").click(function(){
+        $("#panel").slideToggle("slow");
+    });
+});
+</script>
+
+<style> 
+#panel, #flip {
+    
+}
+
+#panel {
+    
+    display: none;
+}
+</style>
     
 <h1>Rate Movies</h1>
 
@@ -56,89 +75,92 @@
             </div>
         </div>
         
+        <div class="row vertical_offset_s">
+                <div class="col-md-3">
+                    {!!Form::submit('Rate Movie', ["class"=>"btn btn-primary btn-sm"])!!}
+                </div>
+        </div>
+        
     </fieldset>
 </div>
         
-<div class='well'>
+<div id='flip' class='well'>
     <fieldset>
-        <legend><i class='glyphicon glyphicon-film'></i> Advanced Rating</legend>
-    
-        <div class="row vertical_offset_s">
-            <div class="col-md-3">
-                {!! Form::label('directing', 'Rate the Directing') !!}
-                <div>
-                    {!!Form::text('directing', '', ["class"=>"slider new_line", "data-slider-min"=>"0", "data-slider-max"=>"100", "data-slider-step"=>"1", "data-slider-value"=>"0"]) !!}
+        <legend><i class='glyphicon glyphicon-play'></i> Click For Advanced Ratings</legend>
+    </fieldset>
+</div>
+
+
+<div id='panel'>
+    <fieldset>
+        <div class='well'>
+            <div class="row vertical_offset_s">
+                <div class="col-md-3">
+                    {!! Form::label('directing', 'Rate the Directing') !!}
+                    <div>
+                        {!!Form::text('directing', '', ["class"=>"slider new_line", "data-slider-min"=>"0", "data-slider-max"=>"100", "data-slider-step"=>"1", "data-slider-value"=>"0"]) !!}
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="row vertical_offset_s">
-            <div class="col-md-3">
-                {!! Form::label('lead_actors', 'Rate the Leading Actors') !!}
-                <div>
-                    {!!Form::text('lead_actors', '', ["class"=>"slider new_line", "data-slider-min"=>"0", "data-slider-max"=>"100", "data-slider-step"=>"1", "data-slider-value"=>"0"]) !!}
+            <div class="row vertical_offset_s">
+                <div class="col-md-3">
+                    {!! Form::label('lead_actors', 'Rate the Leading Actors') !!}
+                    <div>
+                        {!!Form::text('lead_actors', '', ["class"=>"slider new_line", "data-slider-min"=>"0", "data-slider-max"=>"100", "data-slider-step"=>"1", "data-slider-value"=>"0"]) !!}
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="row vertical_offset_s">
-            <div class="col-md-3">
-                {!! Form::label('supporting_cast', 'Rate the Supporting Cast') !!}
-                <div>
-                    {!!Form::text('supporting_cast', '', ["class"=>"slider new_line", "data-slider-min"=>"0", "data-slider-max"=>"100", "data-slider-step"=>"1", "data-slider-value"=>"0"]) !!}
+            <div class="row vertical_offset_s">
+                <div class="col-md-3">
+                    {!! Form::label('supporting_cast', 'Rate the Supporting Cast') !!}
+                    <div>
+                        {!!Form::text('supporting_cast', '', ["class"=>"slider new_line", "data-slider-min"=>"0", "data-slider-max"=>"100", "data-slider-step"=>"1", "data-slider-value"=>"0"]) !!}
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="row vertical_offset_s">
-            <div class="col-md-3">
-                {!! Form::label('other', 'Rate the Other Stuff') !!}
-                <div>
-                    {!!Form::text('other', '', ["class"=>"slider new_line", "data-slider-min"=>"0", "data-slider-max"=>"100", "data-slider-step"=>"1", "data-slider-value"=>"0"]) !!}
+            <div class="row vertical_offset_s">
+                <div class="col-md-3">
+                    {!! Form::label('other', 'Rate the Other Stuff') !!}
+                    <div>
+                        {!!Form::text('other', '', ["class"=>"slider new_line", "data-slider-min"=>"0", "data-slider-max"=>"100", "data-slider-step"=>"1", "data-slider-value"=>"0"]) !!}
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="row vertical_offset_s">
-            <div class="col-md-3">
-                {!! Form::label('experience', 'Experience') !!}
-                <div>
-                    {!!Form::text('experience', '', ["class"=>"slider new_line", "data-slider-min"=>"0", "data-slider-max"=>"100", "data-slider-step"=>"1", "data-slider-value"=>"0"]) !!}
+            <div class="row vertical_offset_s">
+                <div class="col-md-3">
+                    {!! Form::label('experience', 'Experience') !!}
+                    <div>
+                        {!!Form::text('experience', '', ["class"=>"slider new_line", "data-slider-min"=>"0", "data-slider-max"=>"100", "data-slider-step"=>"1", "data-slider-value"=>"0"]) !!}
+                    </div>
                 </div>
             </div>
-        </div>
-        
-        <div class="row vertical_offset_s">
-            <div class="col-md-3">
-                {!! Form::label('mood', 'Mood') !!}
-                <div>
-                    {!!Form::text('mood', '', ["class"=>"slider new_line", "data-slider-min"=>"0", "data-slider-max"=>"100", "data-slider-step"=>"1", "data-slider-value"=>"0"]) !!}
+
+            <div class="row vertical_offset_s">
+                <div class="col-md-3">
+                    {!! Form::label('mood', 'Mood') !!}
+                    <div>
+                        {!!Form::text('mood', '', ["class"=>"slider new_line", "data-slider-min"=>"0", "data-slider-max"=>"100", "data-slider-step"=>"1", "data-slider-value"=>"0"]) !!}
+                    </div>
                 </div>
             </div>
-        </div>
-        
-        <div class="row vertical_offset_s">
-            <div class="col-md-3">
-                {!! Form::label('with', 'Watched With') !!}
-                {!!Form::text('with', '', ["class"=>"form-control", "placeholder" => "SO, friend, Mom.... "]) !!}
-            </div>
-        </div>
 
-        <div class="row vertical_offset_s">
-            <div class="col-md-3">
-                {!!Form::submit('Rate Movie', ["class"=>"btn btn-primary btn-sm"])!!}
+            <div class="row vertical_offset_s">
+                <div class="col-md-3">
+                    {!! Form::label('with', 'Watched With') !!}
+                    {!!Form::text('with', '', ["class"=>"form-control", "placeholder" => "SO, friend, Mom.... "]) !!}
+                </div>
             </div>
-        </div>
 
-<!--        <div class="row vertical_offset_s">
-            <div class="col-md-3">
-                {!! Form::label('slider', 'Slide Me') !!}
-                <input id="ex6" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="50">
-                <span id="ex6CurrentSliderValLabel">Current Slider Value: <span id="ex6SliderVal">50</span></span>
-
+            <div class="row vertical_offset_s">
+                <div class="col-md-3">
+                    {!!Form::submit('Rate Movie', ["class"=>"btn btn-primary btn-sm"])!!}
+                </div>
             </div>
-        </div>-->
-        
+        </div>    
     </fieldset>
 </div>
 
