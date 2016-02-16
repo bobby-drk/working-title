@@ -5,6 +5,7 @@
 <!-- <link rel="icon" type="image/ico" href="http://beblank.com/favicon.ico"/> -->
 <link rel="stylesheet" href="{{ URL::asset('assets/css/bootstrap.min.css') }}">
 <link rel="stylesheet" href="{{ URL::asset('assets/css/bootstrap-theme-flatly.min.css') }}">
+<link rel="stylesheet" href="{{ URL::asset('assets/css/bootstrap-slider.min.css') }}">
 <link rel="stylesheet" href="{{ URL::asset('assets/css/style.css') }}">
 
 <title>Working Title</title>

@@ -2,6 +2,7 @@
 use App\User;
 use App\UserProvider;
 
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -18,9 +19,22 @@ Route::get('/', ['as' => 'home', function () {
     return view('pages.home');
 }]);
 
-Route::get('profile', ['as' => 'profile', function(Request $request) {
+Route::get('profile', ['as' => 'profile', function() {
     return View::make('pages.profile');
 }]);
+
+Route::get('rate', ['as' => 'rate', function() {
+    return View::make('pages.rate');
+}]);
+
+Route::get('test', ['as' => 'test', function() {
+    return View::make('pages.test');
+}]);
+
+Route::post('save_rating', function() {
+//    dd($request->all());
+    dd($_POST);
+});
 
 
 // Authentication routes...
@@ -29,21 +43,18 @@ Route::post('login', 'Auth\AuthController@postLogin');
 Route::get('logout', 'Auth\AuthController@getLogout');
 
 // Registration routes...
-Route::get('register', ['as'=> 'register', 'uses' =>'Auth\AuthController@getRegister']);
+Route::get('register', 'Auth\AuthController@getRegister');
 Route::post('register', 'Auth\AuthController@postRegister');
 
 // Password reset link request routes...
-Route::get('password/email', ['as'=> 'forgot_pw', 'uses' =>'Auth\PasswordController@getEmail']);
+Route::get('password/email', 'Auth\PasswordController@getEmail');
 Route::post('password/email', 'Auth\PasswordController@postEmail');
 
 // Password reset routes...
 Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
 
-Route::get('facebook_login', [
-    'as'    => 'fb_login',
-    'uses'  => 'Auth\AuthController@redirectToFB'
-]);
+Route::get('facebook_login', 'Auth\AuthController@redirectToFB');
 Route::get('auth/facebook/callback', 'Auth\AuthController@handleFBCallback');
 
 
