@@ -13,3 +13,8 @@ html {
 { 
     display:block; 
 }
+
+#open_panel {
+    
+    display: none;
+}

@@ -31,10 +31,13 @@ Route::get('test', ['as' => 'test', function() {
     return View::make('pages.test');
 }]);
 
-Route::post('save_rating', function() {
-//    dd($request->all());
-    dd($_POST);
-});
+//Route::post('save_rating', function() {
+////    dd($request->all());
+//    dd($_POST);
+//});
+
+// Save movie rating routes...
+Route::post('save_rating', ['middleware' => 'auth', 'uses' => 'MovieController@save_rating']);
 
 
 // Authentication routes...

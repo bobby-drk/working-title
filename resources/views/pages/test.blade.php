@@ -23,20 +23,11 @@
 <script> 
 $(document).ready(function(){
     $("#flip").click(function(){
-        $("#panel").slideToggle("slow");
+        $("#open_panel").slideToggle("slow");
     });
 });
 </script>
-<style> 
-#panel, #flip {
-    /*padding: 5px;*/
-}
 
-#panel {
-    /*padding: 50px;*/
-    display: none;
-}
-</style>
 
         
 <div id='flip' class='well'>
@@ -46,7 +37,7 @@ $(document).ready(function(){
 </div>
 
 
-<div id='panel'>
+<div id='open_panel'>
     <fieldset>
         <div class='well'>
             <div class="row vertical_offset_s">
