@@ -13,17 +13,21 @@ class CreateUserProviderTable extends Migration
     public function up()
     {
         Schema::create('user_providers', function (Blueprint $table) {
-            $table->string('provider_id');
+
+            $table->increments('id');
+            $table->integer('provider_id')->unsigned();
             $table->integer('user_id')->unsigned();
-            $table->string('provider', 32);
-            $table->integer('active')->default(1);
+            $table->string('provider_key');
             $table->timestamps();
 
-            $table->primary(array('provider_id'));
         });
 
         Schema::table('user_providers', function (Blueprint $table) {
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+        });
+
+        Schema::table('user_providers', function (Blueprint $table) {
+            $table->foreign('provider_id')->references('id')->on('providers')->onDelete('cascade');
         });
     }
 

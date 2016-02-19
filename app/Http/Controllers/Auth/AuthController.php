@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
-use App\UserProvider;
-use Auth;
-use Validator;
-use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\ThrottlesLogins;
-use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use App\Http\Controllers\Auth\Redirect;
+use App\Http\Controllers\Controller;
+use App\Models\UserProvider;
+use App\User;
+use Auth;
+use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Socialite;
+use Validator;
 
 class AuthController extends Controller
 {
@@ -49,7 +49,8 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
+            'first_name' => 'required|max:255',
+            'last_name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
         ]);
@@ -64,7 +65,8 @@ class AuthController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
@@ -89,7 +91,8 @@ class AuthController extends Controller
     public function handleFBCallback()
     {
         $user = Socialite::driver('facebook')->user();
-        $local_user = UserProvider::find($user['id'].'facebook');
+
+        $local_user = UserProvider::where('provider_key', $user['id'])->first();
 
         if(count($local_user)) {
             $local_user = $local_user->user()->first();
@@ -107,21 +110,19 @@ class AuthController extends Controller
                 ]);
 
                 UserProvider::create([
-                    'provider_id' => $user['id'].'facebook',
+                    'provider_id' => 1,  //FB is first provider
                     'user_id'=> $local_user['id'],
-                    'provider'=> 'facebook'
+                    'provider_key'=> $user['id']
                 ]);
 
             } else {
                 //update user with
                 UserProvider::create([
-                    'provider_id' => $user['id'].'facebook',
+                    'provider_id' => 1,
                     'user_id'=> $local_user['id'],
-                    'provider'=> 'facebook'
+                    'provider_key'=> $user['id']
                 ]);
             }
-
-        //login
 
         }
 

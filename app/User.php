@@ -39,7 +39,7 @@ class User extends Model implements AuthenticatableContract,
 
     public function providers()
     {
-        return $this->hasMany('App\UserProvider');
+        return $this->belongsToMany('App\Models\Provider', 'user_providers');
     }
 
 

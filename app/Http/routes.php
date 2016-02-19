@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -13,14 +12,6 @@
 
 
 Route::get('/', ['as' => 'home', function () {
-
-// echo bcrypt('password') ."<br />\n";
-// echo "echo located in <a href='#' title= '" . __FILE__ . "'>file</a>  on line " . __LINE__ . "<br />\n";
-// exit;
-
-
-
-
     return view('pages.home');
 }]);
 

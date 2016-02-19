@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Alert;
 use App\User;
-use App\UserProvider;
+use App\Models\Provider;
 use Auth;
 // use Illuminate\Foundation\Auth\ResetsPasswords;
 use Illuminate\Http\Request;
@@ -16,10 +16,20 @@ class UserController extends Controller
     public function load_profile()
     {
         $user = Auth::user();
-        // $id = Auth::id();
-        $user['providers'] = User::find($user->id)->providers;
+        $user_providers = User::find($user->id)->providers;
+        $data['providers']  = Provider::all();
+        $data['user']       = $user;
 
-        return view('pages.profile', $user);
+        foreach($data['providers'] as $i => $provider) {
+            foreach($user_providers as $j => $my_provider) {
+
+                if($provider->id == $my_provider->id) {
+                    $data['providers'][$i]->owned = TRUE;
+                }
+            }
+        }
+
+        return view('pages.profile', $data);
     }
 
     public function save_profile()

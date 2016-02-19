@@ -1,6 +1,17 @@
 @extends('layouts.default')
 @section('content')
 
+<script type="text/javascript">
+$(document).ready(function(){
+    alert("Working");
+    $(".tip-top").tooltip({placement : 'top'});
+    $(".tip-right").tooltip({placement : 'right'});
+    $(".tip-bottom").tooltip({placement : 'bottom'});
+    $(".tip-left").tooltip({ placement : 'left'});
+});
+</script>
+
+
 <h1>Profile</h1>
 
 <div class='well'>
@@ -11,12 +22,12 @@
             <div class="row">
                 <div class="col-md-2">
                     {!! Form::label('first_name', 'First Name') !!}
-                    {!! Form::text('first_name', $first_name, ["class" => "form-control"]) !!}
+                    {!! Form::text('first_name', $user->first_name, ["class" => "form-control"]) !!}
                 </div>
 
                 <div class="col-md-2">
                     {!! Form::label('last_name', 'Last Name') !!}
-                    {!! Form::text('last_name', $last_name, ["class" => "form-control"]) !!}
+                    {!! Form::text('last_name', $user->last_name, ["class" => "form-control"]) !!}
                 </div>
 
             </div>
@@ -24,7 +35,7 @@
             <div class="row vertical_offset_s">
                 <div class="col-md-4">
                     {!! Form::label('email', 'Email Address') !!}
-                    {!!Form::email('email', $email, ["class" => "form-control"]) !!}
+                    {!!Form::email('email', $user->email, ["class" => "form-control"]) !!}
                 </div>
             </div>
 
@@ -79,12 +90,16 @@
 <div class='well'>
     <legend><i class='glyphicon glyphicon-dashboard'></i> Social Networks</legend>
 
-    @foreach($providers as $i => $provider_data)
-        <div>
-            <img src='/assets/images/social_media_icons/{{ $provider_data['provider'] }}.png'>
-            <a href="#">&times;</a>
-        </div>
-    @endforeach
+    <div class="row vertical_offset_s">
+
+        @foreach($providers as $i => $provider_data)
+            <div class="col-md-1">
+                <a href="#" data-toggle="tooltip" data-placement="left" title="Tooltip on left"><img src='/assets/images/social_media_icons/{{ $provider_data->provider_safe_name }}68x68{{ $provider_data->owned ? '' : '_gray' }}.png'></a>
+            </div>
+        @endforeach
+
+    </div>
+
 
 </div>
 
