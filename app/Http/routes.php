@@ -19,13 +19,17 @@ Route::get('/', ['as' => 'home', function () {
     return view('pages.home');
 }]);
 
-Route::get('profile', ['as' => 'profile', function() {
-    return View::make('pages.profile');
-}]);
+Route::get('profile', ['as' => 'profile', 'middleware' => 'auth', 'uses' => 'UserController@load_profile']);
+
+Route::post('profile/save_data', ['middleware' => 'auth', 'uses' => 'UserController@save_profile']);
+
+Route::post('change_password', ['middleware' => 'auth', 'uses' => 'UserController@change_password']);
+
 
 Route::get('rate', ['as' => 'rate', function() {
     return View::make('pages.rate');
 }]);
+
 
 Route::get('test', ['as' => 'test', function() {
     return View::make('pages.test');
@@ -38,24 +42,24 @@ Route::post('save_rating', function() {
 
 
 // Authentication routes...
-Route::get('login', 'Auth\AuthController@getLogin');
+Route::get('login', ['as'=> 'login', 'uses'=> 'Auth\AuthController@getLogin']);
 Route::post('login', 'Auth\AuthController@postLogin');
 Route::get('logout', 'Auth\AuthController@getLogout');
 
 // Registration routes...
-Route::get('register', 'Auth\AuthController@getRegister');
+Route::get('register', ['as'=> 'register', 'uses' =>'Auth\AuthController@getRegister']);
 Route::post('register', 'Auth\AuthController@postRegister');
 
+
 // Password reset link request routes...
-Route::get('password/email', 'Auth\PasswordController@getEmail');
+Route::get('password/email', ['as'=> 'forgot_pw', 'uses' =>'Auth\PasswordController@getEmail']);
 Route::post('password/email', 'Auth\PasswordController@postEmail');
 
 // Password reset routes...
 Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
 
-Route::get('facebook_login', 'Auth\AuthController@redirectToFB');
-Route::get('auth/facebook/callback', 'Auth\AuthController@handleFBCallback');
+Route::get('oauth/connect/{provider_name}/{redir}',  ['as' => 'oauth.connect', 'uses' => 'Auth\OAauthController@connect']);
+Route::get('oauth/callback/{provider_name}', ['as' => 'oauth.callback', 'uses' => 'Auth\OAauthController@callback']);
 
-
-// Route::get('login/{provider?}', 'Auth\AuthController@login');
+Route::get('remove_provider/{provider_id}', ['as'=> 'remove_provider', 'uses' =>'UserController@remove_provider']);

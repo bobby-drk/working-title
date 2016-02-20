@@ -1,4 +1,4 @@
 $(function() {
-    //start
+    $('[data-toggle="tooltip"]').tooltip()
 
 });

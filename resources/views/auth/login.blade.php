@@ -5,7 +5,6 @@
     <div class="row border-between ">
         <div class="col-md-6">
 
-
             {!! Form::open(array('url' => '/login', 'class' => 'form-horizontal')) !!}
                 <fieldset>
                     <legend><i class='glyphicon glyphicon-lock'></i> Login</legend>
@@ -54,7 +53,7 @@
 
                 <div class="row vertical_offset_s">
                     <div class="col-md-12">
-                        <div><a href='{{ route("fb_login") }}'><img src='/assets/images/social_media_icons/facebook.png' /></a></div>
+                        <div><a href='{{ route("oauth.connect", ["facebook", "login"]) }}'><img src='/assets/images/social_media_icons/facebook68x68.png' /></a></div>
                     </div>
                 </div>
 
