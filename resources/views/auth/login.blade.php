@@ -53,7 +53,7 @@
 
                 <div class="row vertical_offset_s">
                     <div class="col-md-12">
-                        <div><a href='{{ route("fb_login") }}'><img src='/assets/images/social_media_icons/facebook.png' /></a></div>
+                        <div><a href='{{ route("oauth.connect", ["facebook", "login"]) }}'><img src='/assets/images/social_media_icons/facebook68x68.png' /></a></div>
                     </div>
                 </div>
 

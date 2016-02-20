@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Auth\Redirect;
 use App\Http\Controllers\Controller;
+use App\Services\SocialNetwork;
 use App\Models\UserProvider;
 use App\User;
 use Auth;
@@ -94,38 +95,7 @@ class AuthController extends Controller
 
         $local_user = UserProvider::where('provider_key', $user['id'])->first();
 
-        if(count($local_user)) {
-            $local_user = $local_user->user()->first();
-        } else {
-
-            $local_user = User::where('email', $user['email'])->first();
-
-            //not found by email either
-            if(!count($local_user)) {
-
-                //create user
-                $local_user = User::create([
-                    'first_name' => $user['name'],
-                    'email'=> $user['email']
-                ]);
-
-                UserProvider::create([
-                    'provider_id' => 1,  //FB is first provider
-                    'user_id'=> $local_user['id'],
-                    'provider_key'=> $user['id']
-                ]);
-
-            } else {
-                //update user with
-                UserProvider::create([
-                    'provider_id' => 1,
-                    'user_id'=> $local_user['id'],
-                    'provider_key'=> $user['id']
-                ]);
-            }
-
-        }
-
+        $local_user = SocialNetwork::process_network($user, $local_user);
 
         Auth::login($local_user, true);
 

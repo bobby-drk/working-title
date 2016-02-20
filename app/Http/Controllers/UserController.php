@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use Alert;
-use App\User;
+use App\Services\SocialNetwork;
 use App\Models\Provider;
+use App\Models\UserProvider;
+use App\User;
 use Auth;
-// use Illuminate\Foundation\Auth\ResetsPasswords;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Input;
+use Socialite;
 
 class UserController extends Controller
 {
@@ -74,7 +76,32 @@ class UserController extends Controller
 
     }
 
+   /**
+     *
+     */
+    public function remove_provider($provider_id)
+    {
+        $id = Auth::id();
+        $deletedRows = UserProvider::where(['user_id' => $id, 'provider_id' => $provider_id])->delete();
 
+        Alert::add("Social network removed from profile", ["alert_type" => "success"]);
+        return redirect()->route('profile');
+    }
+
+    /**
+     *
+     */
+    public function add_provider($provider_id)
+    {
+        $user = Socialite::driver('facebook')->user();
+
+        $local_user = UserProvider::where('provider_key', $user['id'])->first();
+
+        $local_user = SocialNetwork::process_network($user, $local_user);
+
+        Alert::add("Social network has been added to your profile", ["alert_type" => "success"]);
+        return redirect()->route('profile');
+    }
 
 
 }

@@ -91,13 +91,21 @@ $(document).ready(function(){
     <legend><i class='glyphicon glyphicon-dashboard'></i> Social Networks</legend>
 
     <div class="row vertical_offset_s">
-
+        <div class="col-md-12">
         @foreach($providers as $i => $provider_data)
-            <div class="col-md-1">
-                <a href="#" data-toggle="tooltip" data-placement="left" title="Tooltip on left"><img src='/assets/images/social_media_icons/{{ $provider_data->provider_safe_name }}68x68{{ $provider_data->owned ? '' : '_gray' }}.png'></a>
+            <div class="stack_left">
+                @if ($provider_data->owned)
+                    <div class='deletable_element'>
+                        <img src='/assets/images/social_media_icons/{{ $provider_data->provider_safe_name }}68x68.png'>
+                        <a href='{{ route('remove_provider', $provider_data->id) }}' class='app-delete alert-danger' data-toggle="tooltip" data-placement="top" title="Click to Remove">&times;</a>
+                    </div>
+                @else
+                    <a href="{{ route("oauth.connect", [$provider_data->provider_safe_name, "profile"]) }}" data-toggle="tooltip" data-placement="top" title="Click to Add"><img src='/assets/images/social_media_icons/{{ $provider_data->provider_safe_name }}68x68_gray.png'></a>
+                @endif
             </div>
         @endforeach
 
+        </div>
     </div>
 
 

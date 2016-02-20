@@ -15,7 +15,7 @@ class CreateProviders extends Migration
         Schema::create('providers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('provider', 32);
-            $table->string('provider_safe_name', 128);
+            $table->string('provider_safe_name', 128)->unique();;
             $table->timestamps();
 
             $table->softDeletes();
