@@ -14,6 +14,10 @@ use Laravel\Socialite\Facades\Socialite;
 
 class OAauthController extends Controller
 {
+    /**
+     * check if the user has data in the user provider table.  If not add it.  Then log them in
+     */
+
     public function callback($provider_name) {
 
         $auth_user = Auth::user();
@@ -79,7 +83,9 @@ class OAauthController extends Controller
         return redirect()->route($redir);;
 
     }
-
+    /**
+     * Send User to Oauth URL
+     */
     public function connect($provider_name, $redir) {
 
         session(['oauth_redir' => $redir]);

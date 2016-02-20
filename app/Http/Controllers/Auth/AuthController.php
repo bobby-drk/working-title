@@ -72,35 +72,4 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
-
-
-    /**
-     * Redirect the user to the Facebook authentication page.
-     *
-     * @return Response
-     */
-    public function redirectToFB()
-    {
-        return Socialite::driver('facebook')->redirect();
-    }
-
-    /**
-     * Obtain the user information from GitHub.
-     *
-     * @return Response
-     */
-    public function handleFBCallback()
-    {
-        $user = Socialite::driver('facebook')->user();
-
-        $local_user = UserProvider::where('provider_key', $user['id'])->first();
-
-        $local_user = SocialNetwork::process_network($user, $local_user);
-
-        Auth::login($local_user, true);
-
-        return redirect($this->redirectPath);//I think this is a FB issue currently
-
-    }
-
 }

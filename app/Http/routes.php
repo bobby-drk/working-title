@@ -38,18 +38,8 @@ Route::post('password/email', 'Auth\PasswordController@postEmail');
 Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
 
-// Route::get('facebook_login', [
-//     'as'    => 'fb_login',
-//     'uses'  => 'Auth\AuthController@redirectToFB'
-// ]);
-// Route::get('auth/facebook/callback', 'Auth\AuthController@handleFBCallback');
 Route::get('oauth/connect/{provider_name}/{redir}',  ['as' => 'oauth.connect', 'uses' => 'Auth\OAauthController@connect']);
 Route::get('oauth/callback/{provider_name}', ['as' => 'oauth.callback', 'uses' => 'Auth\OAauthController@callback']);
 
 Route::get('remove_provider/{provider_id}', ['as'=> 'remove_provider', 'uses' =>'UserController@remove_provider']);
 Route::get('add_provider/{provider_id}', ['as'=> 'add_provider', 'uses' =>'UserController@add_provider']);
-
-
-
-
-// Route::get('login/{provider?}', 'Auth\AuthController@login');

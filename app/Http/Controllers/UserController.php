@@ -87,21 +87,4 @@ class UserController extends Controller
         Alert::add("Social network removed from profile", ["alert_type" => "success"]);
         return redirect()->route('profile');
     }
-
-    /**
-     *
-     */
-    public function add_provider($provider_id)
-    {
-        $user = Socialite::driver('facebook')->user();
-
-        $local_user = UserProvider::where('provider_key', $user['id'])->first();
-
-        $local_user = SocialNetwork::process_network($user, $local_user);
-
-        Alert::add("Social network has been added to your profile", ["alert_type" => "success"]);
-        return redirect()->route('profile');
-    }
-
-
 }
