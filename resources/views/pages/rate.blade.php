@@ -70,7 +70,7 @@
     </fieldset>
 </div>
         
-<div id='flip' class='well'>
+<div id='flip' class='well well_open_panel'>
     <fieldset>
         <legend><i class='glyphicon glyphicon-play'></i> Click For Advanced Ratings</legend>
     </fieldset>
