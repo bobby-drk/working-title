@@ -15,8 +15,13 @@ class MediaType extends Migration
         Schema::create('media_type', function (Blueprint $table) {
             $table->increments('id');
             $table->string('type');
-            $table->integer('active')->default(1);
             $table->timestamps();
+
+            $table->softDeletes();
+        });
+
+       Schema::table('media', function (Blueprint $table) {
+            $table->foreign('type_id')->references('id')->on('media_type')->onDelete('cascade');
         });
     }
 
@@ -28,5 +33,6 @@ class MediaType extends Migration
     public function down()
     {
         Schema::drop('media_type');
+        $table->dropForeign('media_type_id_foreign');
     }
 }

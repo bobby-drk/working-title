@@ -18,6 +18,9 @@ class Media extends Migration
             $table->integer('type_id')->unsigned();
             $table->timestamps();
         });
+
+
+
     }
 
     /**
