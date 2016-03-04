@@ -63,3 +63,15 @@ Route::get('oauth/connect/{provider_name}/{redir}',  ['as' => 'oauth.connect', '
 Route::get('oauth/callback/{provider_name}', ['as' => 'oauth.callback', 'uses' => 'Auth\OAauthController@callback']);
 
 Route::get('remove_provider/{provider_id}', ['as'=> 'remove_provider', 'uses' =>'UserController@remove_provider']);
+
+
+Route::group(['prefix' => 'api', 'middleware' => ['auth'] ], function () {
+    Route::post('f', 'FriendController@find');
+    Route::post('f/c', 'FriendController@connect');
+    Route::delete('f/d', 'FriendController@delete');
+});
+
+
+Route::group(['prefix' => 'friends', 'middleware' => ['auth'] ], function () {
+    Route::get('/', ["as" => "friends", "uses" => 'FriendController@index']);
+});

@@ -42,5 +42,10 @@ class User extends Model implements AuthenticatableContract,
         return $this->belongsToMany('App\Models\Provider', 'user_providers');
     }
 
+    public function friends()
+    {
+        return $this->belongsToMany('App\User', 'simple_friends' ,'user_id', 'my_friend');
+    }
+
 
 }

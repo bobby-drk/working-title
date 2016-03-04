@@ -18,4 +18,5 @@ class UserProvider extends Model
     {
         return $this->belongsToMany('App\Model\Provider');
     }
+
 }
