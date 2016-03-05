@@ -12,6 +12,11 @@
     @endforeach
 @endif
 
+@if (Session::has('status'))
+    <p class="alert alert-success">{{ Session::get('status') }}</p>
+@endif
+
+
 @if (isset($errors) && $errors->any())
     @foreach ($errors->all() as $error)
         <p class="alert alert-danger">{{ $error }}</p>

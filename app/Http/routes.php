@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\User;
+
 Route::get('/', ['as' => 'home', function () {
     return view('pages.home');
 }]);
@@ -65,7 +67,7 @@ Route::post('register', 'Auth\AuthController@postRegister');
 
 // Password reset link request routes...
 Route::get('password/email', ['as'=> 'forgot_pw', 'uses' =>'Auth\PasswordController@getEmail']);
-Route::post('password/email', 'Auth\PasswordController@postEmail');
+Route::post('password/email',  ['as'=> 'send_pw', 'uses' =>'Auth\PasswordController@postEmail']);
 
 // Password reset routes...
 Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');

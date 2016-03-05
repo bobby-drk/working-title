@@ -6,7 +6,7 @@
         <div class='well '>
 
 
-            {!! Form::open(array('url' => '/register', 'class' => 'form-horizontal')) !!}
+            {!! Form::open(array('url' => route('send_pw'), 'class' => 'form-horizontal')) !!}
                 <fieldset>
                     <legend><i class='glyphicon glyphicon-envelope'></i> Forgot Password</legend>
 
