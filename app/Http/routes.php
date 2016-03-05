@@ -1,45 +1,57 @@
 <?php
-use App\User;
-use App\UserProvider;
-
-use Illuminate\Http\Request;
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
-
 
 Route::get('/', ['as' => 'home', function () {
     return view('pages.home');
 }]);
 
-Route::get('profile', ['as' => 'profile', 'middleware' => 'auth', 'uses' => 'UserController@load_profile']);
 
-Route::post('profile/save_data', ['middleware' => 'auth', 'uses' => 'UserController@save_profile']);
-
-Route::post('change_password', ['middleware' => 'auth', 'uses' => 'UserController@change_password']);
-
-
-Route::get('rate', ['as' => 'rate', function() {
-    return View::make('pages.rate');
-}]);
+    //TO-DO: CLEAN UP RATE ROUTES AFTER PROJECT IS DONE
+    //Rate a movie Section:
+    Route::get('rate', ['as' => 'rate', function() {
+        return View::make('pages.rate');
+    }]);
 
 
-Route::get('test', ['as' => 'test', function() {
-    return View::make('pages.test');
-}]);
+    Route::get('test', ['as' => 'test', function() {
+        return View::make('pages.test');
+    }]);
 
-Route::post('save_rating', function() {
-//    dd($request->all());
-    dd($_POST);
+    Route::post('save_rating', function() {
+    //    dd($request->all());
+        dd($_POST);
+    });
+    //END Rate Movie
+
+
+//Must Be logged in:
+Route::group(['middleware' => 'auth'], function () {
+
+
+    //API routes:
+    Route::group(['prefix' => 'api'], function () {
+        Route::post('f', 'FriendController@find');
+        Route::post('f/c', 'FriendController@connect');
+        Route::delete('f/d', 'FriendController@delete');
+    });
+    //End API
+
+    //Simple Friends Section:
+    Route::group(['prefix' => 'friends'], function () {
+        Route::get('/', ["as" => "friends", "uses" => 'FriendController@index']);
+    });
+    //End Simple Friends
+
+    //Profile Section
+    Route::group(['prefix' => 'profile'], function () {
+        Route::get('/', ['as' => 'profile', 'uses' => 'UserController@load_profile']);
+        Route::post('save_data', ['uses' => 'UserController@save_profile']);
+
+    });
+    Route::get('remove_provider/{provider_id}', ['as'=> 'remove_provider', 'uses' =>'UserController@remove_provider']);
+    Route::post('change_password', ['middleware' => 'auth', 'uses' => 'UserController@change_password']);
+    //End Profile
+
 });
-
 
 // Authentication routes...
 Route::get('login', ['as'=> 'login', 'uses'=> 'Auth\AuthController@getLogin']);
@@ -62,16 +74,4 @@ Route::post('password/reset', 'Auth\PasswordController@postReset');
 Route::get('oauth/connect/{provider_name}/{redir}',  ['as' => 'oauth.connect', 'uses' => 'Auth\OAauthController@connect']);
 Route::get('oauth/callback/{provider_name}', ['as' => 'oauth.callback', 'uses' => 'Auth\OAauthController@callback']);
 
-Route::get('remove_provider/{provider_id}', ['as'=> 'remove_provider', 'uses' =>'UserController@remove_provider']);
 
-
-Route::group(['prefix' => 'api', 'middleware' => ['auth'] ], function () {
-    Route::post('f', 'FriendController@find');
-    Route::post('f/c', 'FriendController@connect');
-    Route::delete('f/d', 'FriendController@delete');
-});
-
-
-Route::group(['prefix' => 'friends', 'middleware' => ['auth'] ], function () {
-    Route::get('/', ["as" => "friends", "uses" => 'FriendController@index']);
-});
