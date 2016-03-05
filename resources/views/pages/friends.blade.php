@@ -1,5 +1,21 @@
 @extends('layouts.default')
 @section('content')
+@section('page-title')
+Connect With Friends
+@stop
+
+@push('page-css')
+    {{-- start: CSS REQUIRED FOR THIS PAGE ONLY --}}
+    <link rel="stylesheet" href="{{ URL::asset('assets/css/friends.css') }}">
+    {{-- end: CSS REQUIRED FOR THIS PAGE ONLY --}}
+@endpush()
+
+@push('page-js')
+    {{-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY --}}
+    <script src="{{ URL::asset('assets/js/friends.js') }}"></script>
+    {{-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY --}}
+@endpush()
+
 
 <h1>Friends and Such</h1>
 

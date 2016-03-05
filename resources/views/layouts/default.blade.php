@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     @include('includes.head')
-    @include('includes.js')
 </head>
 <body>
     @include('includes.header')
@@ -19,6 +18,11 @@
         </footer>
 
     </div>
-
+    <script src="{{ URL::asset('assets/js/jquery-2.2.0.min.js') }}"></script>
+    <script src="{{ URL::asset('assets/js/bootstrap.min.js') }}"></script>
+    <script src="{{ URL::asset('assets/js/bootstrap-slider.js') }}"></script>
+    <script src="{{ URL::asset('assets/js/jquery.autocomplete.js') }}"></script>
+    <script src="{{ URL::asset('assets/js/main.js') }}"></script>
+@stack('page-js')
 </body>
 </html>
