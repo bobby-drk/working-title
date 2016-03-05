@@ -6,7 +6,7 @@ use Alert;
 use App\Services\SocialNetwork;
 use App\Models\Provider;
 use App\Models\UserProvider;
-use App\User;
+use App\Models\User;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;

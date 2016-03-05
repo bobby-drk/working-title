@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
@@ -44,7 +44,7 @@ class User extends Model implements AuthenticatableContract,
 
     public function friends()
     {
-        return $this->belongsToMany('App\User', 'simple_friends' ,'user_id', 'my_friend')->orderBy('first_name')->orderBy('last_name');
+        return $this->belongsToMany('App\Models\User', 'simple_friends' ,'user_id', 'my_friend')->orderBy('first_name')->orderBy('last_name');
     }
 
 

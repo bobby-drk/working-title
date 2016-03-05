@@ -6,7 +6,7 @@ use App\Http\Controllers\Auth\Redirect;
 use App\Http\Controllers\Controller;
 use App\Services\SocialNetwork;
 use App\Models\UserProvider;
-use App\User;
+use App\Models\User;
 use Auth;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
