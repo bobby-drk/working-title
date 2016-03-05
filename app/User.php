@@ -44,7 +44,7 @@ class User extends Model implements AuthenticatableContract,
 
     public function friends()
     {
-        return $this->belongsToMany('App\User', 'simple_friends' ,'user_id', 'my_friend');
+        return $this->belongsToMany('App\User', 'simple_friends' ,'user_id', 'my_friend')->orderBy('first_name')->orderBy('last_name');
     }
 
 

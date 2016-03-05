@@ -17,7 +17,7 @@ $(function() {
         minChars: 3,
         params: {"_token" : $('meta[name="csrf-token"]').attr('content') },
         paramName : "email",
-        deferRequestBy : 1000,
+        deferRequestBy : 500,
         onSelect: function(suggestion) {
              // alert('You selected: ' + suggestion.value + ', ' + suggestion.data);
              $(this).val(suggestion.data);
