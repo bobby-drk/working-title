@@ -15,6 +15,24 @@ use Socialite;
 
 class UserController extends Controller
 {
+
+    /*
+    |--------------------------------------------------------------------------
+    | User Controller - Profile page + parts,
+    |--------------------------------------------------------------------------
+    |
+    | This controller handles the user accounts (not related to authentication),
+    |     profile pages, and basic user manipulation.
+    |
+    */
+
+
+
+    /**
+     * Simple control to load the profile page
+     *
+     * @return view
+     */
     public function load_profile()
     {
         $user = Auth::user();
@@ -34,6 +52,11 @@ class UserController extends Controller
         return view('pages.profile', $data);
     }
 
+    /**
+     * Save user data from profile page
+     *
+     * @return view (via redirect)
+     */
     public function save_profile()
     {
 
@@ -46,10 +69,14 @@ class UserController extends Controller
 
         Alert::add("Your profile data has been saved!");
         return redirect()->route('profile');
-
-
     }
 
+
+    /**
+     * Allow a user to save password.  Return them to profile page on completion
+     *
+     * @return view (via redirect)
+     */
     protected function change_password(Request $request)
     {
         $id = Auth::id();
@@ -73,11 +100,12 @@ class UserController extends Controller
         }
 
         return redirect()->route('profile');
-
     }
 
-   /**
+    /**
+     * Remove user a social network connection from a user
      *
+     * @return view (via redirect)
      */
     public function remove_provider($provider_id)
     {
