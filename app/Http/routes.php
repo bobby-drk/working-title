@@ -6,25 +6,6 @@ Route::get('/', ['as' => 'home', function () {
     return view('pages.home');
 }]);
 
-
-    //TO-DO: CLEAN UP RATE ROUTES AFTER PROJECT IS DONE
-    //Rate a movie Section:
-    Route::get('rate', ['as' => 'rate', function() {
-        return View::make('pages.rate');
-    }]);
-
-
-    Route::get('test', ['as' => 'test', function() {
-        return View::make('pages.test');
-    }]);
-
-    Route::post('save_rating', function() {
-    //    dd($request->all());
-        dd($_POST);
-    });
-    //END Rate Movie
-
-
 //Must Be logged in:
 Route::group(['middleware' => 'auth'], function () {
 
@@ -42,6 +23,16 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/', ["as" => "friends", "uses" => 'FriendController@index']);
     });
     //End Simple Friends
+    
+    //Rate a movie Section:
+    Route::get('rate', ['as' => 'rate', function() {
+        return View::make('pages.rate');
+    }]);
+  
+    Route::post('save_rating', function() {
+        Route::post('f', 'RateController@newrating');
+    });
+    //END Rate Movie
 
     //Profile Section
     Route::group(['prefix' => 'profile'], function () {
