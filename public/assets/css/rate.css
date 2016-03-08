@@ -1,0 +1,15 @@
+#open_panel {
+
+display: none;
+margin-bottom: none;
+padding-bottom: none;
+border-bottom: none;
+}
+
+.well_open_panel
+{
+margin-bottom: 0px;
+padding-bottom: 0px;
+border-bottom: none;
+
+}

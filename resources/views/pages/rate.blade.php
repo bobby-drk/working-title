@@ -1,29 +1,18 @@
 @extends('layouts.default')
 @section('content')
 
-<!--    {!! Form::open(array('url' => 'save_rating')) !!}
-        {!! Form::label('movie', 'Movie Title') !!}
-        {!! Form::text('Movie Title'); !!}
-        {!! Form::submit('Add'); !!}
-        
-    {!! Form::close() !!}-->
+@push('page-css')
+    {{-- start: CSS REQUIRED FOR THIS PAGE ONLY --}}
+    <link rel="stylesheet" href="{{ URL::asset('assets/css/rate.css') }}">
+    {{-- end: CSS REQUIRED FOR THIS PAGE ONLY --}}
+@endpush()
 
+@push('page-js')
+    {{-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY --}}
+    <script src="{{ URL::asset('assets/js/rate.js') }}"></script>
+    {{-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY --}}
+@endpush()
 
-<script>
-    $(function() {
-    // Handler for .ready() called.
-        // This is the slider selector
-        $(".slider").slider();
-        $("#ex6").on("slide", function(slideEvt) {
-            $("#ex6SliderVal").text(slideEvt.value);
-        });
-        // This is the open and close the advanced rating panel
-        $("#flip").click(function(){
-        $("#open_panel").slideToggle("slow");
-        });
-        
-    });
-</script>
 
 <h1>Rate Movies</h1>
 
