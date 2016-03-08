@@ -28,6 +28,9 @@ Route::get('/', ['as' => 'home', function () {
 //Must Be logged in:
 Route::group(['middleware' => 'auth'], function () {
 
+    Route::get('tmdb', ['uses' => 'MovieController@example']);
+
+
 
     //API routes:
     Route::group(['prefix' => 'api'], function () {
@@ -50,7 +53,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     });
     Route::get('remove_provider/{provider_id}', ['as'=> 'remove_provider', 'uses' =>'UserController@remove_provider']);
-    Route::post('change_password', ['middleware' => 'auth', 'uses' => 'UserController@change_password']);
+    Route::post('change_password', ['uses' => 'UserController@change_password']);
     //End Profile
 
 });
