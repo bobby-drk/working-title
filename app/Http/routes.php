@@ -14,6 +14,7 @@ Route::get('/', ['as' => 'home', function () {
     }]);
 
 
+<<<<<<< HEAD
     Route::get('test', ['as' => 'test', function() {
         return View::make('pages.test');
     }]);
@@ -27,6 +28,15 @@ Route::get('/', ['as' => 'home', function () {
 
 //Must Be logged in:
 Route::group(['middleware' => 'auth'], function () {
+=======
+//Route::post('save_rating', function() {
+////    dd($request->all());
+//    dd($_POST);
+//});
+
+// Save movie rating routes...
+Route::post('save_rating', ['middleware' => 'auth', 'uses' => 'MovieController@save_rating']);
+>>>>>>> rate_page_cleanup
 
 
     //API routes:

@@ -12,33 +12,19 @@
 <script>
     $(function() {
     // Handler for .ready() called.
-
+        // This is the slider selector
         $(".slider").slider();
         $("#ex6").on("slide", function(slideEvt) {
             $("#ex6SliderVal").text(slideEvt.value);
         });
+        // This is the open and close the advanced rating panel
+        $("#flip").click(function(){
+        $("#open_panel").slideToggle("slow");
+        });
+        
     });
 </script>
 
-<script> 
-$(document).ready(function(){
-    $("#flip").click(function(){
-        $("#panel").slideToggle("slow");
-    });
-});
-</script>
-
-<style> 
-#panel, #flip {
-    
-}
-
-#panel {
-    
-    display: none;
-}
-</style>
-    
 <h1>Rate Movies</h1>
 
 <div class='well'>
@@ -77,21 +63,21 @@ $(document).ready(function(){
         
         <div class="row vertical_offset_s">
                 <div class="col-md-3">
-                    {!!Form::submit('Rate Movie', ["class"=>"btn btn-primary btn-sm"])!!}
+                    {!!Form::submit('Rate Movie', ["class"=>"btn btn-primary btn-sm", "id"=>"rate_movie"])!!}
                 </div>
         </div>
         
     </fieldset>
 </div>
         
-<div id='flip' class='well'>
+<div id='flip' class='well well_open_panel'>
     <fieldset>
         <legend><i class='glyphicon glyphicon-play'></i> Click For Advanced Ratings</legend>
     </fieldset>
 </div>
 
 
-<div id='panel'>
+<div id='open_panel'>
     <fieldset>
         <div class='well'>
             <div class="row vertical_offset_s">
@@ -123,7 +109,7 @@ $(document).ready(function(){
 
             <div class="row vertical_offset_s">
                 <div class="col-md-3">
-                    {!! Form::label('other', 'Rate the Other Stuff') !!}
+                    {!! Form::label('other', 'Rate the Music') !!}
                     <div>
                         {!!Form::text('other', '', ["class"=>"slider new_line", "data-slider-min"=>"0", "data-slider-max"=>"100", "data-slider-step"=>"1", "data-slider-value"=>"0"]) !!}
                     </div>

@@ -125,6 +125,7 @@ hr {
 
 }
 
+<<<<<<< HEAD
 
     @keyframes flash {
             0%, 50%, 100% {
@@ -142,3 +143,20 @@ hr {
          .flash {
             animation-name: flash;
          }
+=======
+#open_panel {
+    
+    display: none;
+    margin-bottom: none;
+    padding-bottom: none;
+    border-bottom: none;
+}
+
+.well_open_panel
+{
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    border-bottom: none;
+    
+}
+>>>>>>> rate_page_cleanup
