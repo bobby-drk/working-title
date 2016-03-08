@@ -28,10 +28,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('rate', ['as' => 'rate', function() {
         return View::make('pages.rate');
     }]);
-  
-    Route::post('save_rating', function() {
-        Route::post('f', 'RateController@newrating');
-    });
+
+    Route::post('rate/save', 'RateController@newrating');
     //END Rate Movie
 
     //Profile Section

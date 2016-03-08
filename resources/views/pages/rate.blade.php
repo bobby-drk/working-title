@@ -17,7 +17,7 @@
 <h1>Rate Movies</h1>
 
 <div class='well'>
-    {!! Form::open(array('url' => 'save_rating', 'class' => 'form-horizontal')) !!}
+    {!! Form::open(array('url' => 'rate/save', 'class' => 'form-horizontal')) !!}
     <fieldset>
         <legend><i class='glyphicon glyphicon-film'></i> Movie Title</legend>
         <div class="row">

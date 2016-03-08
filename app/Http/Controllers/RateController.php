@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Alert;
 use App\Http\Controllers\Controller;
 use App\Models\Rate;
 use App\Models\User;
@@ -13,11 +14,11 @@ class RateController extends Controller
     
     public function newrating()
     {
-        $my_id = \Illuminate\Support\Facades\Auth::id();
-        $new_rating = new \App\Models\Rate ();
+        $my_id = Auth::id();
+        $new_rating = new Rate ();
         $new_rating->user_id = $my_id;
-        $new_rating->movie_id = 2;
-        $new_rating->rating = '25';
+        $new_rating->movie_id = 4;
+        $new_rating->rating = 'score';
         $new_rating->save();
         
 //        Variables from the page:
@@ -31,6 +32,8 @@ class RateController extends Controller
 //        mood
 //        with
 //        
+        Alert::add("You rated a move successfully!");
+        return redirect()->route('rate');
     }
 
 }
