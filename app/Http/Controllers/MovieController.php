@@ -9,16 +9,14 @@ use App\Http\Controllers\Controller;
 
 class MovieController extends Controller
 {
-    public function example()
-{
 
     public function load_profile()
     {
-    $user = Auth::user();
-    // $id = Auth::id();
-    $user['providers'] = User::find($user->id)->providers;
+        $user = Auth::user();
+        // $id = Auth::id();
+        $user['providers'] = User::find($user->id)->providers;
 
-    return view('pages.profile', $user);
+        return view('pages.profile', $user);
     }
 
     public function example()
@@ -42,7 +40,7 @@ class MovieController extends Controller
         // echo $movie->getImdbId();
         // echo $movie->getTitle();
 
-// echo $tmdb->getPoster($movie, '400');
+echo $tmdb->getPoster($movie, '400');
 
 exit;
 
