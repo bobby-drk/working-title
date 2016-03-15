@@ -40,12 +40,12 @@ class MovieController extends Controller
         // echo $movie->getImdbId();
         // echo $movie->getTitle();
 
-echo $tmdb->getPoster($movie, '400');
+// echo $tmdb->getPoster($movie, '400');
 
-exit;
+// exit;
 
 
 
-        return $movie;
+        return view('pages.movie_example');
     }
 }

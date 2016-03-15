@@ -1,5 +1,5 @@
 @extends('layouts.default')
-@section('content')
+
 @section('page-title')
 Connect With Friends
 @stop
@@ -16,7 +16,7 @@ Connect With Friends
     {{-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY --}}
 @endpush()
 
-
+@section('content')
 <h1>Friends and Such</h1>
 
 <div class='well'>
