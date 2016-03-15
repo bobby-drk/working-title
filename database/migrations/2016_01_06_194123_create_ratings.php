@@ -26,7 +26,7 @@ class CreateRatings extends Migration
     //I think we should discuss these last three or change how they work in the futrue
             $table->integer('experience')->unsigned();
             $table->integer('mood')->unsigned();
-            $table->integer('watched_with')->unsigned();
+            $table->string('watched_with');
             $table->timestamps();
         });
     }

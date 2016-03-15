@@ -29,14 +29,15 @@ class RateController extends Controller
         $new_rating->user_id = $my_id;
         $new_rating->movie_id = 42;
         $new_rating->rating = $score;
-        $new_rating->date_watched = $score;
+        $new_rating->date_watched = $date;
         $new_rating->directing = $directing;
         $new_rating->leading_actors = $lead_actors;
         $new_rating->supporting_cast = $supporting_cast;
         $new_rating->music = $music;
         $new_rating->experience = $experience;
         $new_rating->mood = $mood;
-        $new_rating->with = $with;        
+        $new_rating->watched_with = $with;
+        $new_rating->save();
 
         Alert::add("You rated a move successfully!");
         return redirect()->route('rate');
