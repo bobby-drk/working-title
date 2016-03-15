@@ -17,7 +17,7 @@
 <h1>Rate Movies</h1>
 
 <div class='well'>
-    {!! Form::open(array('url' => 'save_rating', 'class' => 'form-horizontal')) !!}
+    {!! Form::open(array('url' => 'rate/save', 'class' => 'form-horizontal')) !!}
     <fieldset>
         <legend><i class='glyphicon glyphicon-film'></i> Movie Title</legend>
         <div class="row">
@@ -98,9 +98,9 @@
 
             <div class="row vertical_offset_s">
                 <div class="col-md-3">
-                    {!! Form::label('other', 'Rate the Music') !!}
+                    {!! Form::label('music', 'Rate the Music') !!}
                     <div>
-                        {!!Form::text('other', '', ["class"=>"slider new_line", "data-slider-min"=>"0", "data-slider-max"=>"100", "data-slider-step"=>"1", "data-slider-value"=>"0"]) !!}
+                        {!!Form::text('music', '', ["class"=>"slider new_line", "data-slider-min"=>"0", "data-slider-max"=>"100", "data-slider-step"=>"1", "data-slider-value"=>"0"]) !!}
                     </div>
                 </div>
             </div>
