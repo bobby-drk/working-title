@@ -1,5 +1,5 @@
 $(function() {
 
-alert("Yo Yo Mamma");
+// alert("Yo Yo Mamma");
 
 });
