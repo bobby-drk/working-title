@@ -19,11 +19,11 @@ Movie Example
 
 @section('content')
 
-@include('smidgen.input_loader', ['key'=>'value'])
-@include('smidgen.input_loader', ['key'=>'value2'])
-@include('smidgen.input_loader', ['key'=>'value3'])
-
-
-
+@include('snippets.input_loader', [
+    'il_input_name'=>'value',
+    'il_class'=> 'class_1',
+    'il_span_class'=> 'loading_gif',
+    'il_gif_src'=> '/assets/images/bounce_ball_blue.gif',
+])
 
 @stop

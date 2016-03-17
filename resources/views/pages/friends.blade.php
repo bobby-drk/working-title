@@ -12,6 +12,7 @@ Connect With Friends
 
 @push('page-js')
     {{-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY --}}
+    <script src="{{ URL::asset('assets/js/jquery.autocomplete.js') }}"></script>
     <script src="{{ URL::asset('assets/js/friends.js') }}"></script>
     {{-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY --}}
 @endpush()
@@ -28,10 +29,11 @@ Connect With Friends
                 {!! Form::label('friends_emails', 'Friends Email') !!}
 
                 <div class="input-group">
-                    <div class='form-control attach_loader'>
-                        {!! Form::text('friends_emails', "", ["class" => "get_friends"]) !!}
-                        <span class='friend_email_loader'><img src='/assets/images/bounce_ball_red.gif' /></span>
-                    </div>
+                    @include('snippets.input_loader', [
+                        'il_input_name'=>'friends_emails',
+                        'il_class'=> 'get_friends',
+                        'il_span_class'=> 'friend_email_loader',
+                    ])
                     <span class="input-group-btn">
                         <button id='connect_friend' class="btn btn-default" type="button">Connect</button>
                     </span>
